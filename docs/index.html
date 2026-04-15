@@ -1,0 +1,675 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>标驰检测｜动物疫病检测与防控服务平台</title>
+  <meta name="description" content="云南标驰检测有限公司，聚焦动物疫病检测、免疫效果评价、动物健康评估、疫病净化及防控咨询培训，服务养殖场、企业、合作社与主管单位。" />
+  <style>
+    :root {
+      --bg: #0b1320;
+      --panel: rgba(255,255,255,0.08);
+      --panel-strong: rgba(255,255,255,0.12);
+      --line: rgba(255,255,255,0.14);
+      --text: #eef4ff;
+      --muted: #b6c2d9;
+      --brand: #5aa9ff;
+      --brand-2: #74e2c7;
+      --dark-text: #122033;
+      --shadow: 0 18px 60px rgba(3, 10, 22, 0.28);
+      --max: 1180px;
+      --radius: 22px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans SC", system-ui, -apple-system, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 15% 20%, rgba(90,169,255,0.20), transparent 28%),
+        radial-gradient(circle at 85% 15%, rgba(116,226,199,0.18), transparent 24%),
+        linear-gradient(180deg, #0a1425 0%, #0d172a 40%, #0b1320 100%);
+      line-height: 1.65;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    .container {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(16px);
+      background: rgba(7, 13, 24, 0.56);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      min-height: 72px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    .brand-badge {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, var(--brand), var(--brand-2));
+      color: var(--dark-text);
+      font-weight: 800;
+      box-shadow: var(--shadow);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      color: var(--muted);
+      font-size: 14px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .nav-links a:hover { color: #fff; }
+
+    .hero {
+      padding: 72px 0 34px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .hero-main, .hero-side, .card, .metric, .timeline-item {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-main {
+      padding: 34px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-main::after {
+      content: "";
+      position: absolute;
+      inset: auto -60px -60px auto;
+      width: 220px;
+      height: 220px;
+      background: radial-gradient(circle, rgba(116,226,199,0.34), transparent 65%);
+      pointer-events: none;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.08);
+      color: #d5e4ff;
+      font-size: 13px;
+      border: 1px solid rgba(255,255,255,0.08);
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(34px, 5vw, 58px);
+      line-height: 1.12;
+      letter-spacing: -0.03em;
+      max-width: 10em;
+    }
+
+    .hero-main p {
+      margin: 18px 0 0;
+      color: var(--muted);
+      font-size: 17px;
+      max-width: 42em;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 28px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 20px;
+      border-radius: 14px;
+      border: 1px solid transparent;
+      font-weight: 700;
+      transition: 0.22s ease;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--brand), var(--brand-2));
+      color: var(--dark-text);
+    }
+
+    .btn-secondary {
+      border-color: rgba(255,255,255,0.14);
+      color: #fff;
+      background: rgba(255,255,255,0.04);
+    }
+
+    .btn:hover { transform: translateY(-1px); }
+
+    .hero-side {
+      padding: 26px;
+      display: grid;
+      gap: 14px;
+      align-content: start;
+    }
+
+    .hero-side h3 {
+      margin: 0 0 10px;
+      font-size: 18px;
+    }
+
+    .mini-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .mini-item {
+      padding: 14px 16px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .mini-item strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 15px;
+    }
+
+    .mini-item span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .section {
+      padding: 34px 0;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+
+    .section-head h2 {
+      margin: 0;
+      font-size: clamp(26px, 4vw, 40px);
+      letter-spacing: -0.03em;
+    }
+
+    .section-head p {
+      margin: 0;
+      color: var(--muted);
+      max-width: 38em;
+    }
+
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-top: 20px;
+    }
+
+    .metric {
+      padding: 22px;
+      min-height: 160px;
+    }
+
+    .metric .num {
+      font-size: 32px;
+      font-weight: 800;
+      line-height: 1;
+      margin-bottom: 10px;
+      letter-spacing: -0.04em;
+    }
+
+    .metric h3 {
+      margin: 0 0 8px;
+      font-size: 16px;
+    }
+
+    .metric p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .cards-3, .cards-2 {
+      display: grid;
+      gap: 16px;
+    }
+
+    .cards-3 { grid-template-columns: repeat(3, 1fr); }
+    .cards-2 { grid-template-columns: repeat(2, 1fr); }
+
+    .card {
+      padding: 24px;
+      height: 100%;
+    }
+
+    .card h3 {
+      margin: 0 0 10px;
+      font-size: 20px;
+    }
+
+    .card p, .card li {
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .card ul {
+      margin: 12px 0 0;
+      padding-left: 18px;
+      display: grid;
+      gap: 10px;
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .tag {
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.09);
+      color: #dce8ff;
+      font-size: 13px;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .timeline-item {
+      padding: 18px 20px;
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 18px;
+      align-items: start;
+    }
+
+    .timeline-year {
+      font-weight: 800;
+      color: #fff;
+      font-size: 18px;
+    }
+
+    .timeline-item p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .cta {
+      padding: 56px 0 70px;
+    }
+
+    .cta-box {
+      padding: 32px;
+      border-radius: 28px;
+      background: linear-gradient(135deg, rgba(90,169,255,0.18), rgba(116,226,199,0.14));
+      border: 1px solid rgba(255,255,255,0.10);
+      box-shadow: var(--shadow);
+    }
+
+    .cta-box h2 {
+      margin: 0 0 12px;
+      font-size: clamp(28px, 4vw, 42px);
+      letter-spacing: -0.03em;
+    }
+
+    .cta-box p {
+      margin: 0;
+      color: #d8e6fb;
+      max-width: 44em;
+    }
+
+    .footer {
+      padding: 0 0 34px;
+      color: #9fb0c8;
+      font-size: 14px;
+    }
+
+    .muted-note {
+      margin-top: 14px;
+      color: #99abc4;
+      font-size: 13px;
+    }
+
+    @media (max-width: 1024px) {
+      .hero-grid, .cards-3, .metrics, .cards-2 {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .hero-grid > :first-child {
+        grid-column: 1 / -1;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .nav-inner,
+      .section-head,
+      .hero-actions,
+      .timeline-item,
+      .hero-grid,
+      .cards-3,
+      .metrics,
+      .cards-2 {
+        grid-template-columns: 1fr;
+        display: grid;
+      }
+
+      .nav-inner {
+        justify-content: start;
+      }
+
+      .nav-links {
+        justify-content: start;
+      }
+
+      .hero-main, .hero-side, .card, .metric, .timeline-item, .cta-box {
+        padding: 20px;
+      }
+
+      .timeline-item {
+        gap: 8px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="container nav-inner">
+      <div class="brand">
+        <div class="brand-badge">BC</div>
+        <div>
+          <div>标驰检测</div>
+          <div style="font-size:12px;color:var(--muted);font-weight:500;">动物疫病检测与防控服务平台</div>
+        </div>
+      </div>
+      <nav class="nav-links">
+        <a href="#about">公司简介</a>
+        <a href="#services">服务内容</a>
+        <a href="#strengths">核心优势</a>
+        <a href="#cases">应用场景</a>
+        <a href="#contact">联系标驰</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-main">
+          <div class="eyebrow">第三方兽医检测服务机构 · 动物疫病防控专业服务</div>
+          <h1>让检测更专业，<br/>让防控更前置。</h1>
+          <p>云南标驰检测有限公司聚焦动物疫病检测、免疫效果评价、动物健康评估、疫病净化及防控咨询培训，面向养殖企业、合作社、基层防疫体系与相关单位，提供更高效率、更可落地的技术支撑与服务协同。</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#contact">咨询合作</a>
+            <a class="btn btn-secondary" href="#services">查看服务</a>
+          </div>
+          <div class="tag-row">
+            <span class="tag">动物疫病检测</span>
+            <span class="tag">免疫效果评价</span>
+            <span class="tag">动物健康评估</span>
+            <span class="tag">防控咨询培训</span>
+          </div>
+        </div>
+
+        <aside class="hero-side">
+          <div>
+            <h3>核心信息</h3>
+            <div class="mini-list">
+              <div class="mini-item">
+                <strong>公司地址</strong>
+                <span>云南省滇中新区秧旺街1188号中关村电子城（昆明）科技产业园二期44#地6栋301/302</span>
+              </div>
+              <div class="mini-item">
+                <strong>资质定位</strong>
+                <span>科技型中小企业、高新技术企业（2025）、昆明市备案第三方兽医实验室之一</span>
+              </div>
+              <div class="mini-item">
+                <strong>技术协同</strong>
+                <span>配套 PII 生物安全实验室，并与高校开展病原体检测及病毒分离培养合作</span>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>公司简介</h2>
+          </div>
+          <p>标驰检测立足云南，服务养殖业防疫需求与动物健康管理需求，致力于打造更专业、更高效、更可信赖的第三方兽医检测服务平台。</p>
+        </div>
+        <div class="metrics">
+          <article class="metric">
+            <div class="num">2022</div>
+            <h3>公司成立</h3>
+            <p>聚焦第三方兽医检测服务，持续完善检测能力与技术服务体系。</p>
+          </article>
+          <article class="metric">
+            <div class="num">PII</div>
+            <h3>实验环境</h3>
+            <p>配套生物安全实验室，为病原体检测及相关实验提供基础支撑。</p>
+          </article>
+          <article class="metric">
+            <div class="num">2025</div>
+            <h3>创新资质</h3>
+            <p>入选科技型中小企业与高新技术企业，创新能力持续提升。</p>
+          </article>
+          <article class="metric">
+            <div class="num">3+</div>
+            <h3>年度专利成果</h3>
+            <p>围绕酶标仪、洗板机、荧光定量 PCR 仪等方向取得实用新型专利。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="services">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>服务内容</h2>
+          </div>
+          <p>从检测到评估，从净化到咨询，标驰检测围绕养殖生产中的核心风险点，提供更完整的技术服务链条。</p>
+        </div>
+        <div class="cards-3">
+          <article class="card">
+            <h3>动物疫病检测</h3>
+            <p>围绕主要动物疫病开展检测、诊断与监测服务，为养殖场和相关单位提供更及时的判断依据。</p>
+            <ul>
+              <li>病原体检测</li>
+              <li>流行病学监测</li>
+              <li>风险预警支持</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>免疫效果评价</h3>
+            <p>基于实际养殖防疫需求，对免疫程序执行效果进行评估，为后续优化调整提供参考。</p>
+            <ul>
+              <li>抗体水平检测</li>
+              <li>免疫程序复盘</li>
+              <li>效果评估建议</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>动物健康评估</h3>
+            <p>结合检测结果与现场情况，对动物健康状态、潜在风险与管理短板进行综合分析。</p>
+            <ul>
+              <li>健康状态评估</li>
+              <li>生产风险识别</li>
+              <li>管理优化建议</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>疫病净化服务</h3>
+            <p>围绕养殖场长期发展需求，提供疫病净化的技术支持，帮助建立更稳定的生物安全体系。</p>
+            <ul>
+              <li>净化路径设计</li>
+              <li>分阶段监测方案</li>
+              <li>过程跟踪服务</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>防控咨询与培训</h3>
+            <p>将实验室能力与一线养殖实践结合，面向企业、合作社和基层防疫体系提供咨询与培训服务。</p>
+            <ul>
+              <li>现场服务指导</li>
+              <li>防疫培训支持</li>
+              <li>技术方案输出</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>校企协同研究</h3>
+            <p>依托企业平台与高校协同，持续提升在病原体检测、病毒分离培养等方向的能力积累。</p>
+            <ul>
+              <li>产学研协同</li>
+              <li>检测能力提升</li>
+              <li>技术成果沉淀</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="strengths">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>核心优势</h2>
+          </div>
+          <p>不是只做检测，更强调结果的可解释、建议的可执行、服务的可持续。</p>
+        </div>
+        <div class="cards-2">
+          <article class="card">
+            <h3>更贴近养殖场景</h3>
+            <p>标驰检测不是停留在实验环节，而是围绕养殖企业真实问题组织服务逻辑，把检测结果真正转化为管理依据与防控动作。</p>
+          </article>
+          <article class="card">
+            <h3>实验条件与技术基础同步建设</h3>
+            <p>配套 PII 生物安全实验室，持续完善硬件配置与技术流程，为相关检测服务提供更扎实的底层支撑。</p>
+          </article>
+          <article class="card">
+            <h3>创新能力持续积累</h3>
+            <p>围绕实验检测设备与流程持续形成专利成果，并入选科技创新相关支持清单，体现出持续研发和优化能力。</p>
+          </article>
+          <article class="card">
+            <h3>区位与协同效率优势</h3>
+            <p>位于滇中新区中关村电子城（昆明）科技产业园，便于开展区域内业务协同、样品流转与技术服务对接。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="cases">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>应用场景</h2>
+          </div>
+          <p>面向不同服务对象，标驰检测可以形成更有针对性的服务组合，而不是一套模板打天下。</p>
+        </div>
+        <div class="cards-3">
+          <article class="card">
+            <h3>规模化养殖企业</h3>
+            <p>围绕生产稳定、免疫效果、健康评估和疫病净化，帮助企业构建更系统的防控管理机制。</p>
+          </article>
+          <article class="card">
+            <h3>合作社与家庭农场</h3>
+            <p>针对资源有限、技术支撑不足等问题，提供更务实、更可执行的检测和咨询服务。</p>
+          </article>
+          <article class="card">
+            <h3>基层防疫体系</h3>
+            <p>为监测、排查、培训和能力提升提供技术支撑，服务区域动物防疫工作的规范化推进。</p>
+          </article>
+        </div>
+
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-year">2025</div>
+            <p>取得“带进出仓辅助的酶标仪”“自动洗板机”“扩增室用荧光定量PCR仪”等实用新型专利，持续强化检测设备与实验流程创新能力。</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">2025</div>
+            <p>入选滇中新区科技创新券兑付清单，体现出企业在科技创新和技术应用方面的实际成果转化能力。</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">持续推进</div>
+            <p>与高校开展病原体检测及病毒分离培养合作，不断提升第三方兽医检测平台的技术深度与服务广度。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta" id="contact">
+      <div class="container">
+        <div class="cta-box">
+          <h2>把检测做得更稳，把防控做得更前。</h2>
+          <p>如果正在寻找一家能够提供动物疫病检测、免疫效果评价、动物健康评估、疫病净化和防控咨询培训的专业服务机构，欢迎与标驰检测沟通合作。</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="mailto:example@example.com">发起咨询</a>
+            <a class="btn btn-secondary" href="https://github.com/d36820566-lang/wechat-assets/tree/main/docs" target="_blank" rel="noopener">查看源码</a>
+          </div>
+          <div class="muted-note">地址：云南省滇中新区秧旺街1188号中关村电子城（昆明）科技产业园二期44#地6栋301/302</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">© 标驰检测 · 云南标驰检测有限公司 ｜ 本页面为展示型官网示例页</div>
+  </footer>
+</body>
+</html>
